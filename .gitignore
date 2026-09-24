@@ -1,0 +1,41 @@
+# ---------- Python / venv ----------
+.venv/
+venv/
+env/
+*.py[cod]
+__pycache__/
+*.egg-info/
+
+# ---------- Base de données ----------
+*.db
+*.sqlite3
+
+# ---------- Secrets / env locaux ----------
+.env
+.env.local
+
+# ---------- Tests / coverage ----------
+.pytest_cache/
+.coverage
+htmlcov/
+coverage/
+
+# ---------- IDE ----------
+.idea/
+.vscode/
+*.iml
+
+# ---------- OS ----------
+.DS_Store
+Thumbs.db
+
+# ---------- Flutter / Dart ----------
+build/
+.dart_tool/
+.pub-cache/
+.pub/
+*.snapshot
+flutter_export_environment.sh
+
+# ---------- Captures de bugs ----------
+bug_images/
