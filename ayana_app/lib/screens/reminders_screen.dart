@@ -36,7 +36,8 @@ class RemindersScreen extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 16),
-          Container(8            width: double.infinity,
+          Container(
+            width: double.infinity,
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               gradient: brandGradient(),

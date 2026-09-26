@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../data/mock_data.dart';
+import '../services/api_service.dart';
 import '../theme/app_theme.dart';
 import '../theme/ui_widgets.dart';
 
@@ -18,17 +19,59 @@ class _ChatScreenState extends State<ChatScreen> {
     ChatMessage(welcomeMessage, false, DateTime.now()),
   ];
 
-  void _send(String text) {
-    if (text.trim().isEmpty) return;
+  bool _isLoading = false;
+
+  bool get _isTyping =>
+      _isLoading && _messages.isNotEmpty && _messages.last.text.isEmpty;
+
+  Future<void> _send(String text) async {
+    final trimmed = text.trim();
+    if (trimmed.isEmpty || _isLoading) return;
+
     setState(() {
-      _messages.add(ChatMessage(text, true, DateTime.now()));
-      final reply = quickReplies[text] ?? fallbackReply;
-      _messages.add(ChatMessage(reply, false, DateTime.now()));
+      _isLoading = true;
+      _messages.add(ChatMessage(trimmed, true, DateTime.now()));
+      _messages.add(ChatMessage('', false, DateTime.now()));
     });
     _controller.clear();
+    _scrollToBottom(extra: 60);
+
+    final history = _messages
+        .where((m) => m.text.isNotEmpty)
+        .map<({String role, String text})>((m) =>
+            (role: m.isUser ? 'user' : 'assistant', text: m.text))
+        .toList();
+
+    String reply;
+    try {
+      reply = await ApiService.sendMessage(history);
+    } on ApiException catch (e) {
+      reply = e.message;
+    } catch (_) {
+      reply =
+          'Impossible de joindre le serveur. Vérifie que le backend est lancé '
+          'et que l’URL est correcte.';
+    }
+
+    if (!mounted) return;
+    setState(() {
+      _isLoading = false;
+      final last = _messages.last;
+      if (last.text.isEmpty && !last.isUser) {
+        _messages[_messages.length - 1] =
+            ChatMessage(reply, false, DateTime.now());
+      } else {
+        _messages.add(ChatMessage(reply, false, DateTime.now()));
+      }
+    });
+    _scrollToBottom();
+  }
+
+  void _scrollToBottom({double extra = 120}) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!_scrollController.hasClients) return;
       _scrollController.animateTo(
-        _scrollController.position.maxScrollExtent + 120,
+        _scrollController.position.maxScrollExtent + extra,
         duration: const Duration(milliseconds: 250),
         curve: Curves.easeOut,
       );
@@ -106,6 +149,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   );
                 }
                 final m = _messages[i];
+                final isTyping = m.text.isEmpty && !m.isUser && _isTyping;
                 return Align(
                   alignment:
                       m.isUser ? Alignment.centerRight : Alignment.centerLeft,
@@ -125,13 +169,31 @@ class _ChatScreenState extends State<ChatScreen> {
                           ? null
                           : Border.all(color: AppColors.border),
                     ),
-                    child: Text(
-                      m.text,
-                      style: TextStyle(
-                        color: m.isUser ? Colors.white : AppColors.textPrimary,
-                        height: 1.3,
-                      ),
-                    ),
+                    child: isTyping
+                        ? const Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              SizedBox(
+                                width: 14,
+                                height: 14,
+                                child: CircularProgressIndicator(
+                                    strokeWidth: 2, color: AppColors.sage),
+                              ),
+                              SizedBox(width: 10),
+                              Text('AYANA écrit…',
+                                  style: TextStyle(
+                                      color: AppColors.textSecondary,
+                                      fontSize: 13)),
+                            ],
+                          )
+                        : Text(
+                            m.text,
+                            style: TextStyle(
+                              color:
+                                  m.isUser ? Colors.white : AppColors.textPrimary,
+                              height: 1.3,
+                            ),
+                          ),
                   ),
                 );
               },
@@ -163,7 +225,8 @@ class _ChatScreenState extends State<ChatScreen> {
                   child: IconButton(
                     icon: const Icon(Icons.send_rounded,
                         color: Colors.white, size: 20),
-                    onPressed: () => _send(_controller.text),
+                    onPressed:
+                        _isLoading ? null : () => _send(_controller.text),
                   ),
                 ),
               ],

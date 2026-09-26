@@ -1,0 +1,1 @@
+"""Services métier (LLM Gemini, etc.)."""

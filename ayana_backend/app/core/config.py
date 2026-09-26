@@ -28,6 +28,12 @@ class Settings(BaseSettings):
     otp_expire_minutes: int = 10
     otp_length: int = 6
 
+    # Gemini (LLM du chat)
+    gemini_api_key: str = ""
+    gemini_model: str = "gemini-3.6-flash"
+    gemini_max_tokens: int = 600
+    chat_max_len: int = 500  # longueur max d'un message utilisatrice
+
     # Langues proposées par l'application
     available_languages: list[str] = ["fr", "ewe", "kbp"]
 

@@ -8,6 +8,7 @@ from app.schemas.auth import (
     TokenResponse,
     UserResponse,
 )
+from app.schemas.chat import ChatMessage, ChatRequest, ChatResponse
 from app.schemas.user import MessageResponse, UserUpdateRequest
 
 __all__ = [
@@ -17,6 +18,9 @@ __all__ = [
     "RegisterRequest",
     "TokenResponse",
     "UserResponse",
+    "ChatMessage",
+    "ChatRequest",
+    "ChatResponse",
     "MessageResponse",
     "UserUpdateRequest",
 ]

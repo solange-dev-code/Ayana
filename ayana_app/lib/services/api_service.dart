@@ -19,14 +19,14 @@ class ApiException implements Exception {
 /// Client HTTP vers le backend FastAPI AYANA.
 ///
 /// URL de base configurable au build :
-///   flutter run --dart-define=API_URL=http://<IP_DU_BACKEND>:8000
+///   flutter run --dart-define=API_URL=http://`<IP_DU_BACKEND>`:8000
 /// (10.0.2.2 = localhost vu depuis l'émulateur Android).
 class ApiService {
   ApiService._();
 
   static const String baseUrl = String.fromEnvironment(
     'API_URL',
-    defaultValue: 'http://10.0.119.91:8000',
+    defaultValue: 'http://192.168.1.67:8000',
   );
 
   static const String _tokenKey = 'ayana_access_token';
@@ -170,6 +170,25 @@ class ApiService {
         ));
     final json = jsonDecode(response.body) as Map<String, dynamic>;
     return json['detail'] as String? ?? 'Code envoyé.';
+  }
+
+  /// Envoie la conversation à l'assistante IA (POST /api/chat).
+  ///
+  /// [history] : messages déjà échangés (``role`` : "user" | "assistant").
+  static Future<String> sendMessage(
+    List<({String role, String text})> history,
+  ) async {
+    final response = await _send(() => http.post(
+          Uri.parse('$baseUrl/api/chat'),
+          headers: _authHeaders,
+          body: jsonEncode({
+            'messages': [
+              for (final m in history) {'role': m.role, 'text': m.text},
+            ],
+          }),
+        ));
+    final json = jsonDecode(response.body) as Map<String, dynamic>;
+    return json['reply'] as String? ?? '';
   }
 
   /// Profil courant (GET /api/users/me).
