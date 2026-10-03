@@ -1,6 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- L'application appelle une API HTTP : sans cette permission, aucune
+         requête ne part, quelle que soit l'adresse du backend. -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
-        android:label="ayana_app"
+        android:label="AYANA"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

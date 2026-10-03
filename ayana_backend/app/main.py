@@ -3,7 +3,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api.routes import auth, chat, users
+from app.api.routes import auth, chat, content, users
 from app.core.config import settings
 from app.db.base import Base, engine
 
@@ -31,6 +31,7 @@ def create_app() -> FastAPI:
     app.include_router(auth.router)
     app.include_router(users.router)
     app.include_router(chat.router)
+    app.include_router(content.router)
 
     @app.get("/api/health", tags=["health"])
     def health() -> dict[str, str]:

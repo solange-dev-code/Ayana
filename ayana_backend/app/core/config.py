@@ -31,8 +31,17 @@ class Settings(BaseSettings):
     # Gemini (LLM du chat)
     gemini_api_key: str = ""
     gemini_model: str = "gemini-3.6-flash"
-    gemini_max_tokens: int = 600
-    chat_max_len: int = 500  # longueur max d'un message utilisatrice
+    # Plafond TOTAL de sortie, raisonnement compris. Ce modèle raisonne avant
+    # de répondre (~600 à ~1150 tokens mesurés) et ce raisonnement est
+    # décompté de ce plafond : un plafond de 1200 tokens laissait à peine
+    # 200 tokens de réponse visible, coupée en milieu de phrase
+    # (finish_reason MAX_TOKENS). À maintenir bien au-dessus de
+    # « raisonnement + longueur visée » ; le prompt fixe la longueur.
+    # Le modèle ignore le paramètre thinking_budget, d'où ce plafond large.
+    gemini_max_tokens: int = 2500
+    # Longueur max d'un message de l'utilisatrice. Les réponses d'AYANA
+    # renvoyées dans l'historique ont leur propre limite (voir schemas/chat.py).
+    chat_max_len: int = 500
 
     # Langues proposées par l'application
     available_languages: list[str] = ["fr", "ewe", "kbp"]

@@ -116,7 +116,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
               ),
               const SizedBox(height: 10),
               const Center(
-                child: Text('Tes données restent confidentielles 🔒',
+                child: Text('Tes données restent confidentielles',
                     style: TextStyle(color: AppColors.textMuted, fontSize: 12)),
               ),
             ],

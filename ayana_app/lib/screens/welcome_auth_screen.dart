@@ -4,6 +4,7 @@ import '../theme/app_theme.dart';
 import '../theme/ui_widgets.dart';
 import 'login_screen.dart';
 import 'language_screen.dart';
+import 'server_settings_screen.dart';
 
 class WelcomeAuthScreen extends StatefulWidget {
   const WelcomeAuthScreen({super.key});
@@ -130,6 +131,28 @@ class _WelcomeAuthScreenState extends State<WelcomeAuthScreen> {
                     "ton accord.",
                     textAlign: TextAlign.center,
                     style: TextStyle(color: AppColors.textMuted, fontSize: 12, height: 1.4),
+                  ),
+                  const SizedBox(height: 10),
+                  // Présent ici et non seulement dans le profil : c'est le
+                  // premier écran, et une mauvaise adresse y bloque toute
+                  // inscription. Sans ce lien, l'utilisatrice n'a aucun moyen
+                  // de corriger la configuration avant d'échouer.
+                  TextButton.icon(
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (_) => const ServerSettingsScreen()),
+                    ),
+                    style: TextButton.styleFrom(
+                      foregroundColor: AppColors.textMuted,
+                    ),
+                    icon: const Icon(Icons.dns_outlined, size: 15),
+                    label: Text(
+                      'Connexion impossible ? Changer de serveur',
+                      style: TextStyle(
+                          color: AppColors.textMuted.withValues(alpha: 0.9),
+                          fontSize: 11.5),
+                    ),
                   ),
                 ],
               ),

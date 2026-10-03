@@ -29,6 +29,11 @@ coverage/
 .DS_Store
 Thumbs.db
 
+# ---------- Fichiers temporaires Word/Excel ----------
+# ~$nom.docx = fichier de verrouillage créé à l'ouverture d'un document.
+# Sans cette règle, il se retrouve indexé et casse "git diff" sur le .docx.
+~$*
+
 # ---------- Flutter / Dart ----------
 build/
 .dart_tool/

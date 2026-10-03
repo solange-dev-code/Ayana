@@ -97,7 +97,7 @@ class HelpScreen extends StatelessWidget {
                           SnackBar(
                             content: Text(
                               p.available
-                                  ? 'Orientation demandée auprès de ${p.role} ✅'
+                                  ? 'Orientation demandée auprès de ${p.role}'
                                   : '${p.role} est indisponible pour le moment.',
                             ),
                           ),

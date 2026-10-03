@@ -1,0 +1,74 @@
+{
+  "slug": "corps",
+  "titre": "Je comprends mon corps",
+  "resume": "Règles, cycle et menstruations : ce qui est normal et ce qui mérite un avis médical.",
+  "cdc_sections": ["6.3"],
+  "avertissement": "Contenu général à visée éducative. Il ne remplace pas un examen médical et ne sert pas à poser un diagnostic.",
+  "blocs": [
+    {
+      "id": "cycle",
+      "titre": "Le cycle menstruel",
+      "points": [
+        "Le cycle se compte du premier jour de tes règles jusqu'au premier jour de tes règles suivantes.",
+        "Un cycle dure en moyenne 21 à 35 jours chez l'adulte, mais il varie d'une personne à l'autre et d'un mois à l'autre.",
+        "Le cycle compte plusieurs phases : les règles, la phase où un ovule mûrit, l'ovulation, puis la phase qui précède les règles suivantes.",
+        "L'ovulation se situe environ 14 jours avant les règles suivantes, mais elle peut arriver plus tôt ou plus tard.",
+        "Ce qui compte, c'est ton propre rythme : ce qui compte comme normal pour toi, c'est ce qui est stable dans le temps."
+      ],
+      "source": "OMS - Santé de la femme, questions relatives aux menstruations",
+      "urgence": false
+    },
+    {
+      "id": "signes",
+      "titre": "Ce qui peut changer d'un cycle à l'autre",
+      "points": [
+        "Douleur légère au bas ventre, un peu de tension ou de sensibilité aux seins, un peu de fatigue ou de changements d'humeur.",
+        "Un cycle plus court ou plus long de quelques jours n'est pas inquiétant en soi.",
+        "Le stress, le changement d'alimentation, le sport intensif, la maladie ou un décalage horaire peuvent décaler le cycle.",
+        "Des saignements entre les règles, ou des taches qui apparaissent, méritent d'être signalés à un professionnel.",
+        "Une contraception hormonale peut modifier le saignement : ce n'est pas forcément un problème, mais cela se discute avec le prescripteur."
+      ],
+      "source": "OMS - Santé menstruelle",
+      "urgence": false
+    },
+    {
+      "id": "alerte",
+      "titre": "Signes à ne pas ignorer",
+      "points": [
+        "Des saignements si abondants que tu dois changer de protection toutes les heures pendant plusieurs heures.",
+        "Un mal de ventre intense, ou une douleur qui ne cède pas avec du repos.",
+        "Des pertes vaginales très abondantes, malodorantes, ou accompagn de démangeaisons.",
+        "Fièvre, notamment en période de règles.",
+        "Aucune menstruation pendant trois mois, ou au contraire des saignements très irréguliers.",
+        "Des saignements après la ménopause."
+      ],
+      "source": "OMS - Santé de la femme, saignements menstruels anormaux",
+      "urgence": true
+    },
+    {
+      "id": "hygiene",
+      "titre": "Hygiène pendant les règles",
+      "points": [
+        "Change de protection régulièrement, au moins toutes les quatre à six heures, et après chaque passage aux toilettes.",
+        "Lavage doux à l'eau, sans produit agressif : le vagin se nettoie seul.",
+        "Ne fais pas de douche vaginale : elle perturbe la flore.",
+        "Des pertes blanches ou jaunâtres sans odeur et sans autre symptôme sont souvent normales.",
+        "En cas de doute sur une odeur, une couleur ou une démangeaison, consulte."
+      ],
+      "source": "OMS - Hygiene menstruelle",
+      "urgence": false
+    },
+    {
+      "id": "mythe",
+      "titre": "Quelques idées reçues",
+      "points": [
+        "La présence de la menstruation ne prouve pas qu'il n'y a pas de grossesse : une grossesse peut survenir avant les premières règles suivantes.",
+        "Les règles ne s'arrêtent pas définitivement à un âge précis : la ménopause se constate sur une durée d'environ un à deux ans.",
+        "Le cycle peut changer au fil de la vie, notamment avec la contraception, la grossesse, l'allaitement ou le approaching de la ménopause.",
+        "Ce que tu as appris dans la cour n'est pas forcément exact : une source fiable vaut mieux qu'une rumeur."
+      ],
+      "source": "OMS - Santé de la femme",
+      "urgence": false
+    }
+  ]
+}

@@ -119,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Text(
                     widget.isSignup
                         ? 'Crée ton espace en 2 minutes'
-                        : 'Content de te revoir 👋🏾',
+                        : 'Content de te revoir',
                     style: const TextStyle(color: AppColors.textSecondary),
                   ),
                 ],
@@ -196,7 +196,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     context,
                     MaterialPageRoute(builder: (_) => const ForgotPasswordScreen()),
                   ),
-                  child: const Text('Mot de passe oublié ?',
+                  child: const Text('Connexion par code ?',
                       style: TextStyle(color: AppColors.plum)),
                 ),
               ),

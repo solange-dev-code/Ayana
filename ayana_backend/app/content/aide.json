@@ -1,0 +1,79 @@
+{
+  "slug": "aide",
+  "titre": "Besoin d'aide",
+  "resume": "Savoir vers qui se tourner, et reconnaître les situations qui ne peuvent pas attendre.",
+  "cdc_sections": ["6.8", "7.1"],
+  "avertissement": "Contenu général à visée éducative. AYANA n'est pas un service médical et ne peut ni diagnostiquer ni traiter.",
+  "blocs": [
+    {
+      "id": "orienter",
+      "titre": "À qui s'adresser",
+      "points": [
+        "Une sage-femme ou un ma formationé accompagne la grossesse, l'accouchement et le suivi gynécologique.",
+        "Un médecin est nécessaire en cas de difficulté, de pathologie ou de second avis.",
+        "Un infirmier formé peut informer, orienter et assurer le suivi de base, notamment dans un centre de santé.",
+        "Un centre de santé ou une formation sanitaire de proximité est le point d'entrée habituel des soins au Togo.",
+        "Un pharmacistien peut orienter pour une contraception d'urgence, disponible sans ordonnance dans de nombreux pays."
+      ],
+      "source": "OMS - Soins de santé primaires et systems de sante",
+      "note_validation": "Aucun annuaire de professionnels partenaires n'existe a ce jour. Le cahier des charges (module 7) prevoit de le constituer avec des structures et des professionnels ayant accepte de collaborer. Les libelles ci-dessus sont generiques et doivent etre remplaces par une liste reelle.",
+      "urgence": false
+    },
+    {
+      "id": "urgences",
+      "titre": "Situations qui ne peuvent pas attendre",
+      "points": [
+        "Une douleur pelvienne intense et brutale.",
+        "Des saignements très abondants.",
+        "De la fièvre avec des douleurs du bas ventre.",
+        "Perte de connaissance, confusion, ou difficulté à respirer.",
+        "Un choc, une chute, ou un accident.",
+        "Une douleur thoracique intense.",
+        "Une grossesse avec saignement, contractions, ou perte de liquide.",
+        "Dans ces situations, rends-toi directement dans un établissement de santé."
+      ],
+      "source": "OMS - Soins d'urgence",
+      "urgence": true
+    },
+    {
+      "id": "parler",
+      "titre": "Comment parler de ta santé",
+      "points": [
+        "Tu n'as pas à tout dire d'un coup : commence par ce qui te préoccupe le plus.",
+        "Un professionnel de santé est tenu au secret médical, en particulier pour tout ce qui concerne ta vie sexuelle.",
+        "Dans un établissement de santé, une adolescente a le droit d'être écoute sans jugement, et le droit de poser toutes ses questions.",
+        "Si tu n'oses pas parler à un adulte de ton entourage, une sage-femme ou un service de santé pour les jeunes est un bon point de départ.",
+        "Tu as le droit de demander une explication sur un diagnostic, un traitement ou un résultat d'examen."
+      ],
+      "source": "OMS - Droits des patients",
+      "urgence": false
+    },
+    {
+      "id": "limites",
+      "titre": "Ce qu'AYANA ne peut pas faire",
+      "points": [
+        "AYANA ne pose pas de diagnostic et ne prescrit aucun médicament.",
+        "AYANA ne remplace pas un examen clinique, une analyse ni un diagnostic.",
+        "AYANA ne peut pas interrompre une grossesse ni organiser une intervention : cela relève d'un professionnel et de la loi.",
+        "En cas de doute sur une urgence, va consulter sans attendre une réponse en ligne.",
+        "Tes échanges sont associés à un pseudonyme et ne sont pas partagés, mais aucun service en ligne n'est garanti anonyme."
+      ],
+      "source": "Cahier des charges AYANA, section 4.3",
+      "urgence": false
+    },
+    {
+      "id": "confiance",
+      "titre": "Si tu ne te sens pas en sécurité",
+      "points": [
+        "Nulle obligation de tolérer une situation qui te met en danger : demander de l'aide est un acte de force.",
+        "Tu as le droit d'être prise en charge quel que soit ton âge, dans un établissement de santé.",
+        "Des associations de défense des droits des femmes et des services spécialisés existent au Togo et peuvent t'orienter.",
+        "Si tu es en danger immédiat, rends-toi dans un établissement de santé ou contacte les services compétents.",
+        "Garde les échanges avec AYANA : ce n'est pas une preuve, mais cela peut t'aider à reconstruire les faits."
+      ],
+      "source": "OMS - Violences basées sur le genre et santé des femmes ; Togo - Code pénal",
+      "note_validation": "Les numeros d'aide et les structures citees doivent provenir de sources officielles togolaises avant toute diffusion. Ne pas inventer de contact.",
+      "urgence": true
+    }
+  ]
+}

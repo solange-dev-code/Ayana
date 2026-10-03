@@ -4,6 +4,7 @@ import '../models/user.dart';
 import '../services/api_service.dart';
 import '../theme/app_theme.dart';
 import '../theme/ui_widgets.dart';
+import 'server_settings_screen.dart';
 import 'welcome_auth_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -67,6 +68,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
               title: 'Langue de l’application',
               subtitle: _languageLabel(user?.language),
               onTap: user == null ? null : () => _selectLanguage(context),
+            ),
+            _ProfileTile(
+              title: 'Serveur',
+              subtitle: ApiService.baseUrl,
+              onTap: () => _openServerSettings(context),
             ),
             _ProfileTile(
               title: 'Confidentialité & données',
@@ -240,6 +246,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
     } on ApiException catch (e) {
       if (mounted) _message(e.message);
     }
+  }
+
+  /// Ouvre le réglage du backend.
+  ///
+  /// Après un changement d'adresse, la session locale n'est plus valable : le
+  /// jeton a été émis par l'ancien serveur. On la supprime et on renvoie vers
+  /// l'accueil, sinon chaque appel suivant échouerait en 401 sans explication.
+  Future<void> _openServerSettings(BuildContext context) async {
+    final navigateur = Navigator.of(context);
+    final ancien = ApiService.baseUrl;
+    await Navigator.of(context).push(
+      MaterialPageRoute<void>(builder: (_) => const ServerSettingsScreen()),
+    );
+    if (!mounted || ApiService.baseUrl == ancien) return;
+    await ApiService.clearSession();
+    if (!mounted) return;
+    _message('Serveur changé. Reconnecte-toi pour continuer.');
+    navigateur.pushAndRemoveUntil(
+      MaterialPageRoute<void>(builder: (_) => const WelcomeAuthScreen()),
+      (route) => false,
+    );
   }
 
   void _message(String text) {

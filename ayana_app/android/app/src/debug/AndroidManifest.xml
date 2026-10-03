@@ -4,4 +4,11 @@
          to allow setting breakpoints, to provide hot reload, etc.
     -->
     <uses-permission android:name="android.permission.INTERNET"/>
+
+    <!-- Le backend de développement est joignable en HTTP sur le réseau local,
+         à une adresse choisie dans l'app. Voir res/xml/network_security_config.xml. -->
+    <application
+        android:networkSecurityConfig="@xml/network_security_config"
+        tools:replace="android:networkSecurityConfig"
+        xmlns:tools="http://schemas.android.com/tools"/>
 </manifest>

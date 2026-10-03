@@ -1,0 +1,88 @@
+{
+  "slug": "protection",
+  "titre": "Je me protège",
+  "resume": "Sexualité, contraception, infections sexuellement transmissibles et consentement.",
+  "cdc_sections": ["6.4"],
+  "avertissement": "Contenu général à visée éducative. Il ne remplace pas une consultation et ne prescrit aucun traitement : la contraception et le dépistage relèvent d'un professionnel.",
+  "blocs": [
+    {
+      "id": "methodes",
+      "titre": "Les méthodes de contraception",
+      "points": [
+        "Le préservatif est la seule méthode qui protège à la fois d'une grossesse et d'une infection sexuellement transmissible : c'est ce qu'on appelle la double protection.",
+        "Il existe des pilules combinées, des pilules progestatives seules, des implants, des dispositifs intra-utérins et des méthodes sterilisantes.",
+        "Les pilules, les implants et les dispositifs se délivrent sur prescription, après un entretien avec un professionnel qui choisit la méthode adaptée à ta situation.",
+        "Aucune méthode n'est efficace à 100 pour cent. Les pilules se prennent tous les jours à la même heure et une pilule oubliée change les règles du jeu.",
+        "Le préservatif, même utilisé correctement, n'évite pas toutes les IST : il réduit fortement le risque sans l'annuler."
+      ],
+      "source": "OMS - Planification familiale, méthodes contraception",
+      "urgence": false
+    },
+    {
+      "id": "urgence",
+      "titre": "La contraception d'urgence",
+      "points": [
+        "Elle existe pour un rapport non protégé ou une contraception qui a échoué. Ce n'est pas une méthode de contraception régulière.",
+        "Plus c'est tôt, plus c'est efficace. Il existe des comprimés efficaces jusqu'à 72 heures, et d'autres jusqu'à 5 jours.",
+        "Elle n'interrompt pas une grossesse déjà en cours.",
+        "Un pharmacien ou un professionnel de santé peut te conseiller sur ce qu'il faut prendre, selon l'heure écoulée et ta situation.",
+        "Une contraception d'urgence est un bon moment pour parler contraception de façon durable, lors d'une consultation."
+      ],
+      "source": "OMS - Contraception d'urgence",
+      "urgence": false
+    },
+    {
+      "id": "ist",
+      "titre": "Les infections sexuellement transmissibles",
+      "points": [
+        "Ce sont des infections transmises par contact sexuel. Parmi elles : la syphilis, le VIH, l'hépatite B, le papillomavirus et la gonococcie.",
+        "Point important : beaucoup de ces infections ne donnent aucun symptôme, en particulier chez les filles et les femmes. Se sentir bien ne veut pas dire ne pas être infectée.",
+        "Symptômes possibles quand il y en a : brûlures en urinant, pertes anormales, plaies ou boutons dans la zone génitale, douleurs au bas ventre, ganglons gonflés.",
+        "Le VIH et la syphilis se dépistent et se traitent. Un dépistage fait tôt change vraiment la prise en charge.",
+        "Un préservatif bien utilisé réduit fortement la transmission, et la vaccination existe pour certaines infections."
+      ],
+      "source": "OMS - Infections sexuellement transmissibles",
+      "urgence": false
+    },
+    {
+      "id": "depistage",
+      "titre": "Dépistage et prévention",
+      "points": [
+        "Le dépistage des IST fait partie du suivi de la santé sexuelle, quel que soit le nombre de partenaires.",
+        "Il peut être fait sans que personne d'autre soit prévenu, et de façon confidentielle dans un établissement de santé.",
+        "La vaccination contre l'hépatite B et, selon les pays, contre le papillomavirus, se discute avec un professionnel.",
+        "Un test de grossesse se fait par un test urinaire ou sanguin : c'est un acte de soins, pas un jugement."
+      ],
+      "source": "OMS - Dépistage et vaccination",
+      "urgence": false
+    },
+    {
+      "id": "consentement",
+      "titre": "Le consentement",
+      "points": [
+        "Le consentement est ton droit : il doit être libre, informé, demandé, et révocable à tout moment, y compris au milieu d'un rapport.",
+        "Un silence, une peur, une promesse, un cadeau ou une relation avec un adulte plus âgé ne constituent pas un consentement.",
+        "Au Togo, l'âge de la majorité est fixé à 18 ans. Toute relation sexuelle avec une personne mineure constitue une infraction pénale.",
+        "Si tu vis une situation qui t'est imposée, ce n'est pas de ta faute et tu n'es pas seule : des associations de défense des droits des femmes et des services de santé peuvent t'aider.",
+        "Un professionnel de santé est tenu au secret médical : ce que tu dis est confidentiel."
+      ],
+      "source": "Togo - Code pénal, âge de la majorité ; OMS - Saine sexuality",
+      "note_validation": "Le cadre légal doit être validé par une source juridique officielle avant toute diffusion. Ne pas modifier sans vérification.",
+      "urgence": false
+    },
+    {
+      "id": "alerte",
+      "titre": "Signes qui imposent une consultation",
+      "points": [
+        "Brûlures en urinant ou douleur en urinant.",
+        "Pertes vaginales anormales, malodorantes, ou accompagnées de démangeaisons ou de douleurs.",
+        "Plaies, boutons ou lésions dans la zone génitale.",
+        "Douleur dans le bas ventre ou au niveau des reins, surtout avec de la fièvre.",
+        "Saignements après un rapport intime.",
+        "Un doute suffit pour demander un test : c'est la meilleure façon d'y voir clair."
+      ],
+      "source": "OMS - Infections sexuellement transmissibles",
+      "urgence": true
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Autorise le trafic HTTP en clair vers le réseau local, en build de
+  développement uniquement.
+
+  Pourquoi c'est nécessaire : l'adresse du backend est saisie dans l'app
+  (Profil → Serveur), pas figée dans le code. Or Android bloque le HTTP en
+  clair depuis Android 9, et sa liste d'exceptions exige de nommer chaque
+  domaine ou adresse. Il serait impossible d'y inscrire une IP choisie sur
+  l'appareil, qui change à chaque changement de Wi-Fi.
+
+  Ce fichier est dans src/debug : il n'est PAS inclus dans le build de
+  publication. Une version distribuée doit servir le backend en HTTPS, donc
+  cette dérogation n'a pas sa place en production.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system"/>
+        </trust-anchors>
+    </base-config>
+</network-security-config>

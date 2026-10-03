@@ -3,6 +3,7 @@ import '../data/mock_data.dart';
 import '../services/api_service.dart';
 import '../theme/app_theme.dart';
 import '../theme/ui_widgets.dart';
+import 'parcours_screen.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -20,6 +21,24 @@ class _ChatScreenState extends State<ChatScreen> {
   ];
 
   bool _isLoading = false;
+
+  /// Etat reel de la connexion au backend, teste a l'ouverture du chat.
+  bool? _online;
+
+  /// Parcours identifie par le moteur de classification sur le dernier echange.
+  /// Sert a proposer le contenu de la base de connaissances (module 4).
+  String? _parcours;
+
+  @override
+  void initState() {
+    super.initState();
+    _checkConnection();
+  }
+
+  Future<void> _checkConnection() async {
+    final online = await ApiService.ping();
+    if (mounted) setState(() => _online = online);
+  }
 
   bool get _isTyping =>
       _isLoading && _messages.isNotEmpty && _messages.last.text.isEmpty;
@@ -43,8 +62,11 @@ class _ChatScreenState extends State<ChatScreen> {
         .toList();
 
     String reply;
+    String? parcours;
     try {
-      reply = await ApiService.sendMessage(history);
+      final resultat = await ApiService.sendMessage(history);
+      reply = resultat.reply;
+      parcours = resultat.parcours;
     } on ApiException catch (e) {
       reply = e.message;
     } catch (_) {
@@ -56,6 +78,7 @@ class _ChatScreenState extends State<ChatScreen> {
     if (!mounted) return;
     setState(() {
       _isLoading = false;
+      _parcours = parcours;
       final last = _messages.last;
       if (last.text.isEmpty && !last.isUser) {
         _messages[_messages.length - 1] =
@@ -66,6 +89,14 @@ class _ChatScreenState extends State<ChatScreen> {
     });
     _scrollToBottom();
   }
+
+  /// Libelle lisible du slug renvoye par le backend.
+  String? _parcoursLabel(String slug) => const {
+        'grossesse': 'Grossesse',
+        'corps': 'Corps',
+        'protection': 'Protection',
+        'aide': 'Aide',
+      }[slug];
 
   void _scrollToBottom({double extra = 120}) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -100,11 +131,22 @@ class _ChatScreenState extends State<ChatScreen> {
               children: [
                 const AyanaLogo(mark: true, height: 34),
                 const SizedBox(width: 12),
-                const Column(
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('En ligne • Confidentiel 🔒',
-                        style: TextStyle(color: AppColors.successText, fontSize: 12)),
+                    Text(
+                      _online == null
+                          ? 'Vérification…'
+                          : _online!
+                              ? 'En ligne • Confidentiel 🔒'
+                              : 'Hors ligne • Vérifie la connexion',
+                      style: TextStyle(
+                        color: _online == false
+                            ? AppColors.textMuted
+                            : AppColors.successText,
+                        fontSize: 12,
+                      ),
+                    ),
                   ],
                 ),
               ],
@@ -122,6 +164,20 @@ class _ChatScreenState extends State<ChatScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                        if (_parcours != null &&
+                            _parcoursLabel(_parcours!) != null)
+                          ParcoursSuggestion(
+                            label: _parcoursLabel(_parcours!)!,
+                            onTap: () => Navigator.of(context).push(
+                              MaterialPageRoute<void>(
+                                builder: (_) => ParcoursScreen(
+                                    slug: _parcours!),
+                              ),
+                            ),
+                          ),
+                        if (_parcours != null &&
+                            _parcoursLabel(_parcours!) != null)
+                          const SizedBox(height: 14),
                         const Text('Choisis ou écris ta question',
                             style: TextStyle(
                                 color: AppColors.textSecondary, fontSize: 12)),

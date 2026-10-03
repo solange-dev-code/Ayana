@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../data/mock_data.dart';
+import '../services/app_prefs.dart';
 import '../theme/app_theme.dart';
 import '../theme/ui_widgets.dart';
 import 'welcome_auth_screen.dart';
@@ -26,7 +27,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     }
   }
 
-  void _finish() {
+  Future<void> _finish() async {
+    await AppPrefs.markOnboardingSeen();
+    if (!mounted) return;
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(builder: (_) => const WelcomeAuthScreen()),
     );

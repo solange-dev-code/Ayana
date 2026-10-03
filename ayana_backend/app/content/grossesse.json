@@ -1,0 +1,103 @@
+{
+  "slug": "grossesse",
+  "titre": "Je vis ma grossesse",
+  "resume": "Suivi, informations générales et repères utiles selon l'avancement de ta grossesse.",
+  "cdc_sections": ["6.5"],
+  "avertissement": "Contenu général à visée éducative. Il ne remplace pas un suivi médical et ne sert pas à poser un diagnostic ni à adapter un traitement.",
+  "blocs": [
+    {
+      "id": "suivi",
+      "titre": "Le suivi de la grossesse",
+      "points": [
+        "Une grossesse se compte en semaines depuis le premier jour de tes dernières règles, ce que l'on appelle les semaines d'aménorrhée.",
+        "Le repère classique est un ensemble de consultations prénatales réparties sur toute la grossesse, à commencer tôt.",
+        "La première consultation est idéalement faite au premier trimestre : c'est là que l'on vérifie la date de la grossesse.",
+        "À chaque consultation, on mesure la tension et le poids, on évalue la croissance du ventre et on écoute le coeur du bébé.",
+        "Une sage-femme ou un médecin fixe le calendrier adapté à ta situation : c'est cette personne qui fait foi, pas une application."
+      ],
+      "source": "OMS - Soins prénatals pour une expérience de grossesse positive, lignes directrices 2020",
+      "urgence": false
+    },
+    {
+      "id": "trimestres",
+      "titre": "Ce qui change trimestre par trimestre",
+      "points": [
+        "Premier trimestre, environ 1 à 13 semaines : nausées, fatigue et seins sensibles sont fréquents. C'est la période où les fausses couches sont les plus courantes.",
+        "Deuxième trimestre, environ 14 à 27 semaines : le ventre s'arrondit et les mouvements du bébé commencent à se sentir.",
+        "Troisième trimestre, environ 28 semaines jusqu'à l'accouchement : l'essoufflement et la fatigue reviennent, et les mouvements du bébé sont plus nets.",
+        "Des symptômes qui n'appartiennent pas à la grossesse de la personne qui t'entoure méritent toujours d'être montrés à un professionnel."
+      ],
+      "source": "OMS - Soins prénatals, adapté",
+      "urgence": false
+    },
+    {
+      "id": "alimentation",
+      "titre": "Alimentation",
+      "points": [
+        "Vise une alimentation variée : protéines comme viande, poisson, oeuf ou haricots, fruits et légumes, céréales complètes.",
+        "L'eau doit être potable. En cas de doute sur un point d'eau, fais-la bouillir ou utilise une eau traitée.",
+        "Évite la viande crue ou mal cuite, les oeufs crus ou pas bien cuits et les produits laitiers non pasteurisés.",
+        "Évite l'alcool et le tabac : ils sont liés au développement du foetus.",
+        "Les compléments alimentaires, fer ou acide folique, sont prescrits par ton professionnel : n'en commence pas seule."
+      ],
+      "source": "OMS - Alimentation et grossesse ; Togo - Programme national de santé de la reproduction",
+      "urgence": false
+    },
+    {
+      "id": "hygiene",
+      "titre": "Hygiène et vie quotidienne",
+      "points": [
+        "Se laver les mains et changer de sous-vêtements tous les jours limite les infections.",
+        "Une activité physique douce et régulière, comme la marche, est en général favorable, en évitant les efforts brusques.",
+        "Le repos compte : ménage des pauses et évite de rester debout trop longtemps.",
+        "Aucun soin de la peau ou des cheveux ne présente de risque particulier pendant la grossesse.",
+        "Ne prends aucun médicament sans l'avis d'un professionnel, même pour un mal de tête."
+      ],
+      "source": "OMS - Soins prénatals, adapté",
+      "urgence": false
+    },
+    {
+      "id": "signes_alerte",
+      "titre": "Signes qui imposent une consultation",
+      "points": [
+        "Saignement vaginal, quelle qu'en soit la quantité.",
+        "Douleurs abdominales intenses ou persistantes.",
+        "Fièvre élevée.",
+        "Mal de tête très fort qui ne passe pas, ou vision trouble.",
+        "Convulsions.",
+        "Vomissements qui empêchent de manger ou de boire.",
+        "Brûlures ou douleurs en urinant, ou impossibilité d'uriner.",
+        "Perte de liquide depuis le vagin.",
+        "Diminution nette des mouvements du bébé quand tu les sentais normalement.",
+        "En cas de doute, va consulter : aucun de ces signes n'est anodin."
+      ],
+      "source": "OMS - Signes de danger pendant la grossesse",
+      "urgence": true
+    },
+    {
+      "id": "apres_naissance",
+      "titre": "Après la naissance",
+      "points": [
+        "Une consultation postnatale est prévue dans les premières semaines : elle suit la cicatrisation et l'état de la mère.",
+        "L'allaitement maternel est recommandé quand c'est possible, mais ce n'est pas une obligation morale.",
+        "Le choix d'une contraception doit être discuté avec un professionnel, y compris pendant l'allaitement.",
+        "Une difficulté à uriner, une baisse de lait, des douleurs, de la fièvre ou un saignement important après l'accouchement demandent un avis médical."
+      ],
+      "source": "OMS - Soins postnataux",
+      "urgence": false
+    },
+    {
+      "id": "questions",
+      "titre": "Questions à poser à ta sage-femme",
+      "points": [
+        "Quel est le calendrier de mes consultations et à quelles dates ?",
+        "Quels signes dois-je surveiller, et à qui appeler en cas de doute ?",
+        "Quels aliments ou produits dois-je éviter dans mon cas précis ?",
+        "Comment puis-je avoir de la contraception sans être jugée ?",
+        "En cas de doute, à qui je m'adresse et à quelle heure ?"
+      ],
+      "source": "OMS - Accompagnement centré sur la femme",
+      "urgence": false
+    }
+  ]
+}

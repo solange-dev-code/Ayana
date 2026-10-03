@@ -1,7 +1,11 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import '../services/api_service.dart';
+import '../services/app_prefs.dart';
 import '../theme/app_theme.dart';
+import 'main_navigation.dart';
 import 'onboarding_screen.dart';
+import 'welcome_auth_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -28,9 +32,44 @@ class _SplashScreenState extends State<SplashScreen>
 
   void _goNext() {
     if (!mounted) return;
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => const OnboardingScreen()),
-    );
+    _start().then((next) {
+      if (!mounted) return;
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (_) => next),
+      );
+    });
+  }
+
+  /// Détermine l'écran d'ouverture.
+  ///
+  /// Une session valide évite de ressaisir un compte à chaque lancement. Le
+  /// jeton est validé auprès du backend plutôt que lu localement : un jeton
+  /// révoqué ou expiré doit renvoyer vers l'accueil, sinon l'application
+  /// s'ouvre sur une session morte. En revanche une panne réseau ne déconnecte
+  /// pas l'utilisatrice — se reconnecter serait impossible sans backend.
+  Future<Widget> _start() async {
+    if (await ApiService.hasSession()) {
+      try {
+        await ApiService.getMe();
+        return const MainNavigation();
+      } on ApiException catch (e) {
+        if (e.statusCode == 401) {
+          await ApiService.clearSession();
+          return await _apresEchec();
+        }
+        // Panne réseau : la session est probablement encore valable, mais on ne
+        // peut pas le prouver ici. On laisse l'utilisatrice vers la connexion
+        // plutôt que d'ouvrir une session morte.
+        return await _apresEchec();
+      }
+    }
+    return await _apresEchec();
+  }
+
+  Future<Widget> _apresEchec() async {
+    return await AppPrefs.onboardingSeen()
+        ? const WelcomeAuthScreen()
+        : const OnboardingScreen();
   }
 
   @override
