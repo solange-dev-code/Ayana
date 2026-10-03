@@ -154,25 +154,68 @@ const String fallbackReply =
 /* Bibliothèque                                                        */
 /* ------------------------------------------------------------------ */
 
+/// Un module de l'onglet Ressources.
+///
+/// Chaque module est un point d'entrée vers un parcours de la base de
+/// connaissances : ce sont ces parcours, rédigés et sourcés côté backend
+/// (cahier des charges, module 4), qui constituent les ressources médicales.
+/// Le contenu affiché après le clic vient donc du serveur, jamais d'une fiche
+/// locale — il n'y a donc pas de nombre de fiches à inventer ici, le volume
+/// réel est celui renvoyé par `GET /api/contenus`.
+///
+/// Trois modules pointent vers `corps` et trois vers `protection` : c'est
+/// assumé, les parcours ne sont que quatre. Les [motsCles] servent alors à
+/// retrouver le bon module par son sujet et non par sa destination.
 class LibraryTheme {
   final String emoji;
   final String title;
-  final int cardCount;
+
+  /// Parcours ouvert au clic : l'un des `corps`, `protection`, `grossesse`,
+  /// `aide`. Les huit modules se répartissent sur ces quatre parcours.
+  final String slug;
+
+  /// Variantes que l'utilisatrice peut taper pour trouver ce module :
+  /// abréviations, fautes fréquentes, termes médicaux équivalents.
+  final List<String> motsCles;
+
   final Color bg;
   final Color accent;
 
-  const LibraryTheme(this.emoji, this.title, this.cardCount, this.bg, this.accent);
+  const LibraryTheme(
+    this.emoji,
+    this.title,
+    this.slug,
+    this.motsCles,
+    this.bg,
+    this.accent,
+  );
 }
 
 final libraryThemes = [
-  LibraryTheme('💧', 'Règles &\nmenstruations', 12, AppColors.roseLight, AppColors.rose),
-  LibraryTheme('🔄', 'Cycle menstruel', 8, AppColors.roseLight, AppColors.rose),
-  LibraryTheme('🛡️', 'Contraception', 15, AppColors.aubergineLight, AppColors.aubergine),
-  LibraryTheme('❤️', 'IST & prévention', 10, AppColors.aubergineLight, AppColors.aubergine),
-  LibraryTheme('🤝', 'Consentement', 6, AppColors.terracottaLight, AppColors.terracotta),
-  LibraryTheme('🤰🏾', 'Grossesse', 18, AppColors.terracottaLight, AppColors.terracotta),
-  LibraryTheme('💊', 'Santé\nreproductive', 9, AppColors.successBg, AppColors.successText),
-  LibraryTheme('🌿', 'Hygiène &\nbien-être', 7, AppColors.successBg, AppColors.successText),
+  LibraryTheme('💧', 'Règles & menstruations', 'corps',
+      ['regles', 'menstruations', 'regulier', 'irregulier', 'pertes', 'saignements', 'urgence'],
+      AppColors.roseLight, AppColors.rose),
+  LibraryTheme('🔄', 'Cycle menstruel', 'corps',
+      ['cycle', 'phases', 'ovulation', 'ovulatoire', 'fertilite', 'retard', 'urgence'],
+      AppColors.roseLight, AppColors.rose),
+  LibraryTheme('🌿', 'Hygiène & bien-être', 'corps',
+      ['hygiene', 'bien-etre', 'lavage', 'toilette', 'douche', 'corps'],
+      AppColors.successBg, AppColors.successText),
+  LibraryTheme('🛡️', 'Contraception', 'protection',
+      ['contraception', 'contraceptive', 'proteger', 'pilule', 'implant', 'preservatif', 'urgence'],
+      AppColors.aubergineLight, AppColors.aubergine),
+  LibraryTheme('❤️', 'IST & prévention', 'protection',
+      ['ist', 'mst', 'depistage', 'prevention', 'vih', 'hepatite', 'syphilis', 'urgence'],
+      AppColors.aubergineLight, AppColors.aubergine),
+  LibraryTheme('🤝', 'Consentement', 'protection',
+      ['consentement', 'consentir', 'frontieres', 'respect', 'dire non', 'violences'],
+      AppColors.terracottaLight, AppColors.terracotta),
+  LibraryTheme('🤰🏾', 'Grossesse', 'grossesse',
+      ['grossesse', 'enceinte', 'gravide', 'suivi', 'nine', 'sage-femme', 'accouche', 'urgence'],
+      AppColors.terracottaLight, AppColors.terracotta),
+  LibraryTheme('💊', 'Santé reproductive', 'aide',
+      ['reproductif', 'reproduction', 'infertilite', 'gynecologue', 'sterilite'],
+      AppColors.successBg, AppColors.successText),
 ];
 
 /* ------------------------------------------------------------------ */
